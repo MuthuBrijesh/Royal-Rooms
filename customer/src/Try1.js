@@ -4,18 +4,22 @@ import './Try1.css';
 
 function Try1() {
     return(
-        <div className='Register' style={{ backgroundImage: `url(${background})`, height:800,backgroundSize: 'cover',marginTop:-88}}>
-            <form>
-            <h3>Sign Up Here</h3>
+        <div className='Login'>
+            <form >
+            <div class="row">
+                <div class="col"><button classname='upper' style={{backgroundColor:'#ffc9bb'}}>Log In</button></div>
+                <div class="col"><button classname='upper' style={{backgroundColor:'#ffc9bb'}}>Sign Up</button></div>
+            </div><br></br>
+            <h3>Login</h3>
             <label className='Email'>Email</label>
-            <input type='email' className='Email' id='email' name='email' placeholder='Enter the Email-ID' required="required" />
+            <input type='email' className='Email' id='email' name='email' required="required" />
             <label className='Pass'>Password</label>
-            <input type='password' className='Pass' id='pass' name='pass' placeholder='Enter the Password' required="required" />
+            <input type='password' className='Pass' id='pass' name='pass' required="required" />
             <label className='Pass'>Confirm Password</label>
-            <input type='password' className='CPass' id='cpass' name='cpass' placeholder='Enter the Confirm Password' required="required" />
+            <input type='password' className='Pass' id='pass' name='pass' required="required" />
             <br></br>
-            <input type='submit' className='sub' style={{color:'black',backgroundColor:'#ffffff'}} value='Sign Up'/>
-            <br></br>
+            <button>Log In</button>            <br></br>
+            <button>Forgot Password</button>            
             </form>
           </div>
     )
