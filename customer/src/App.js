@@ -3,9 +3,10 @@ import Navbar from './Navbar.js';
 //import Login from './Login';
 //import Register from './Register';
 import ForgetPass from './ForgetPass';
-import Try1 from './Try1';
+import Register from './Register';
+import ForgetPass2 from './ForgetPass2';
 import { BrowserRouter , Routes , Route } from 'react-router-dom';
-import Try2 from './Try2';
+import Login from './Login';
 
 function App() {
   return (
@@ -13,10 +14,10 @@ function App() {
       <div className="App">
         <Navbar />   
         <Routes>
-          <Route path='/login' element={<Try2 />}></Route>
-          <Route path='/Register' element={<Try1 />}></Route>
+          <Route path='/login' element={<Login />}></Route>
+          <Route path='/Register' element={<Register />}></Route>
           <Route path='/Forgetpass' element={<ForgetPass />}></Route>
-  
+          <Route path='/Forgetpass2' element={<ForgetPass2 />}></Route>
         </Routes>
       </div>
     </BrowserRouter>

@@ -31,7 +31,7 @@
 }
 .Login input{
     display: block;
-    height: 50px;
+    height: 40px;
     width: 100%;
     background-color: rgba(255,255,255,0.07);
     border-radius: 3px;
@@ -44,26 +44,13 @@
 }
 .Login button{
     display: block;
-    height: 50px;
+    height: 40px;
     width: 100%;
-    background-color: #ed3419;
-    border-radius: 10px;
+    background-color: black;
     padding: 0 10px;
     margin-top: 8px;
     font-size: 16px;
-    color: black;
-    font-weight: bold;
-}
-.Login .upper {
-    display: block;
-    height: 50px;
-    width: 100%;
-    background-color: #ffc9bb;
-    border-radius: 10px;
-    padding: 0 10px;
-    margin-top: 8px;
-    font-size: 16px;
-    color: black;
+    color: white;
     font-weight: bold;
 }
 .Login ::placeholder{
