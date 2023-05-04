@@ -1,0 +1,51 @@
+.Nav{
+    display: flex;
+    flex: 1 1 0px;
+    flex-direction: column;
+    background-color: black;
+}
+
+element.style {
+    align-items: center;
+}
+.Nav ul {
+    list-style-type: none;
+    color: white;
+    position: sticky;
+    display: flex;
+    flex: 1 1 0px;
+    flex-direction: row;
+}
+
+.Nav li {
+    margin-right: 10px;
+    float: right;
+    font-weight: bold;
+    font-size: x-large;
+    color: white;
+    margin-top: 10px;
+    width:130px;
+    height: 45px;
+    text-align: center;
+}
+
+.Nav li:hover{
+    border: 2px solid #ffff;
+    border-radius: 10px;
+}
+
+.Nav h3 {
+    margin-right: 20px;
+    float: left;
+    font-weight: bold;
+    font-size: xx-large;
+    color: white;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.Nav img {
+    height: 70px;
+    width: 70px;
+    float: left;
+}

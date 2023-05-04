@@ -1,0 +1,87 @@
+.custdetails form{
+    top: 10%;
+    left:20%;
+    height:80%;
+    width: 60%;
+    background-color: rgba(255,255,255,0.13);
+    position: absolute;
+    margin-top: 2%;
+    border-radius: 10px;
+    backdrop-filter: blur(15px);
+    border: 2px rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 50px 35px;
+    border-style: inset;
+}
+.custdetails form *{
+    font-family: 'Poppins',sans-serif;
+    color: white;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+}
+.custdetails form h3{
+    font-size: 42px;
+    font-weight: bold;
+    line-height: 42px;
+    text-align: center;
+}
+
+.custdetails label{
+    display: block;
+    margin-top: 30px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.custdetails input{
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 3px;
+    border-style: outset;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 18px;
+    font-weight:bolder;
+}
+.custdetails select{
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 3px;
+    border-style: outset;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 16px;
+    font-weight: bold;
+}
+.custdetails .select.option {
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 3px;
+    border-style: outset;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.custdetails ::placeholder{
+    color: white;
+}
+
+.custdetails .column {
+    float: left;
+    width: 50%;
+    padding-top: 5px;
+}
+
+.custdetails .row::after {
+    content: "";
+    clear: both;
+    display: table;
+}

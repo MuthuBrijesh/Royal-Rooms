@@ -1,0 +1,36 @@
+.Nav ul {
+    list-style-type: none;
+    overflow: hidden;
+    background-color: none;
+    color: white;
+    position: sticky;
+    margin-left: 20;
+}
+
+.Nav li {
+    margin-right: 20px;
+    float: right;
+    font-weight: bold;
+    font-size: x-large;
+    color: white;
+    margin-top: 10px;
+}
+
+.Nav li:hover{
+    border-style: inset ;
+    background-color: transparent;
+}
+
+.Nav h3 {
+    float: left;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: xx-large;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.Nav img {
+    height: 70px;
+    width: 70px;
+    float: left;
+}

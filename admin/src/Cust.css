@@ -1,0 +1,64 @@
+.cust .form6{
+  position: absolute;
+  top: 17%;
+  left: 35%;
+  margin-top: 2%;
+}
+.cust form *{
+  font-family: 'Poppins',sans-serif;
+  color: white;
+  letter-spacing: 0.5px;
+  outline: none;
+  border: none;
+}
+.cust h1 {
+  text-align: center;
+  color: white;
+  font-size: 5ch;
+}
+
+.cust label{
+  display: block;
+  margin-top: 30px;
+  font-size: 18px;
+  font-weight: bold;
+}
+.cust input{
+  display: block;
+  height: 50px;
+  width: 100%;
+  background-color: rgba(255,255,255,0.07);
+  border-radius: 3px;
+  border-style: outset;
+  padding: 0 10px;
+  margin-top: 8px;
+  font-size: 16px;
+  font-weight: bold;
+}
+.cust ::placeholder{
+  color: white;
+}
+
+.cust .reti {
+  display: block;
+  height: 50px;
+  width: 150%;
+  background-color: rgba(255,255,255,0.07);
+  border-radius: 3px;
+  border-style: outset;
+  padding: 0 10px;
+  margin-top: 8px;
+  font-size: 16px;
+  font-weight: bold;
+}
+.cust button{
+  height: 30px;
+  width: 30%;
+  background-color: rgba(255,255,255,0.07);
+  border-radius: 3px;
+  border-style: outset;
+  margin-left:80px;
+  margin-top: 8px;
+  font-size: 16px;
+  font-weight: bold;
+}

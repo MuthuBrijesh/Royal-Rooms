@@ -1,0 +1,202 @@
+.home .edit{
+    top: 30%;
+    left:10%;
+    color: #fff;
+    text-align: center;
+    position: absolute;
+}
+.edit h1{
+
+    font-size: 7ch;
+    font-family: CerebriSans-Regular, -apple-system, BlinkMacSystemFont, Roboto;
+}
+h2{
+    font-size: 5ch;
+    font-family: CerebriSans-Regular, -apple-system, BlinkMacSystemFont, Roboto;
+} 
+.button-87 {
+    margin: 10px;
+    padding: 15px 30px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    border-radius: 10px;
+    display: block;
+    border: 0px;
+    font-weight: 700;
+    box-shadow: 0px 0px 14px -7px #f09819;
+    background-image: linear-gradient(45deg, #FF512F 0%, #F09819  51%, #FF512F  100%);
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  
+  .button-87:hover {
+    background-position: right center;
+    /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .edit .button-87:active {
+    transform: scale(0.95);
+  }
+
+  .edit1 .column {
+    float: left;
+    width: 50%;
+}
+
+.edit1 .row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.edit1 h1{
+    color:#937047;
+    text-align: center;
+}
+.edit1 h2{
+    font-weight:400 ;
+}
+
+.edit2 h1{
+    color: #f09819;
+    text-align: center;
+}
+.hotelfea h1{
+    color:#937047;
+    text-align: center;
+}
+/*
+.footer-distributed{
+	background: #666;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+	box-sizing: border-box;
+	width: 100%;
+	text-align: left;
+	font: bold 16px sans-serif;
+	padding-top: 55px ;
+}
+
+.footer-distributed .footer-left,
+.footer-distributed .footer-center,
+.footer-distributed .footer-right{
+	display: inline-block;
+	vertical-align: top;
+}
+
+.footer-left img {
+    height: 200px;
+    width: 200px;
+    margin-left: 100px;
+    float: left;
+}
+
+/* Footer left 
+
+.footer-distributed .footer-left{
+	width: 30%;
+}
+
+/* Footer Center 
+
+.footer-distributed .footer-center{
+	width: 30%;
+}
+
+.footer-distributed .footer-center i{
+	background-color:  #33383b;
+	color: #ffffff;
+	font-size: 25px;
+	width: 38px;
+	height: 38px;
+	border-radius: 50%;
+	text-align: center;
+	line-height: 42px;
+	margin: 10px 15px;
+	vertical-align: middle;
+}
+
+.footer-distributed .footer-center p{
+	display: inline-block;
+	color: #ffffff;
+  font-weight:400;
+	vertical-align: middle;
+	margin:0;
+}
+
+.footer-distributed .footer-center p a{
+	color:  lightseagreen;
+	text-decoration: none;;
+}
+/* Footer Right 
+
+.footer-distributed .footer-right{
+	width: 20%;
+}
+
+.footer-distributed .footer-company-about{
+	line-height: 20px;
+	color:  #92999f;
+	font-size: 13px;
+	font-weight: normal;
+	margin: 0;
+}*/
+
+
+
+
+
+/*.feed form{
+    height: 68%;
+    margin-left: 30;
+    width: 46%;
+    position: absolute;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    background-color: black;
+    border: 2px rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 50px 35px;
+    border-style: inset;
+}
+.feed form *{
+    font-family: 'Poppins',sans-serif;
+    color: white;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+}
+.feed form h3{
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 42px;
+    text-align: center;
+}
+.feed label{
+    display: block;
+    margin-top: 30px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.feed input{
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 3px;
+    border-style: outset;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 16px;
+    font-weight: bold;
+}
+.feed ::placeholder{
+    color: white;
+}*/
+

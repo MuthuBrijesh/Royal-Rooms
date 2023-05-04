@@ -1,0 +1,75 @@
+.Room form{
+    top: 10%;
+    left:30%;
+    height: 110%;
+    width: 40%;
+    background-color: rgba(255,255,255,0.13);
+    position: absolute;
+    margin-top: 2%;
+    border-radius: 10px;
+    backdrop-filter: blur(25px);
+    border: 2px rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 50px 35px;
+    border-style: inset;
+}
+.Room form *{
+    font-family: 'Poppins',sans-serif;
+    color: white;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+}
+.Room form h3{
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 42px;
+    text-align: center;
+}
+
+.Room label{
+    display: block;
+    margin-top: 30px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.Room input{
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 3px;
+    border-style: outset;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.Room select{
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 3px;
+    border-style: outset;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 18px;
+    font-weight: bold;
+}
+option {
+    height: 50px;
+    width: 100%;
+    color:black;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 3px;
+    border-style: outset;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.Room ::placeholder{
+    color: white;
+}
