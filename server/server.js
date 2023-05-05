@@ -35,6 +35,7 @@ const User = mongoose.model("UserInfo");
 
 app.post("/login",async (req,res) => {
     const {email,password}= req.body;
+    console.log(email,password);
     const user = await User.findOne({email});
     if(!user) {
         return res.json({ error: "User Not Found"});
@@ -45,7 +46,25 @@ app.post("/login",async (req,res) => {
     res.json({status: "error",error: "Invalid Password"})
 })
 
+app.post("/forget",async (req,res) => {
+    const {email,x}= req.body;
+    const user = await User.findOne({email});
+    if(!user) {
+        return res.json({ error: "User Not Found"});
+    }
+    return res.json({status: "ok"});
+})
 
+app.post("/change",async (req,res) => {
+    const {email,password,cpassword}= req.body;
+    var myquery = { email: email };
+    var newvalues = { $set: {pass: password, cpass: cpassword } };
+    const user = await User.updateOne({myquery},{newvalues});
+    if(!user) {
+        return res.json({ error: "User Not Found"});
+    }
+    return res.json({status: "ok"});
+})
 
 //Register
 app.post("/register",async (req,res) => {
@@ -82,6 +101,23 @@ app.post("/retadmin",async (req,res) => {
         console.log(error);
     }
 });
+
+//Forget Password
+app.post("/forget-password",async(req, res)=>{
+    const {email,x} = req.body;
+    console.log(email,x);
+    try{
+        const oldUser = await User.findOne({email});
+        if(!oldUser){
+            return res.json({status:"User Not Exists!!"});
+        };
+        console.log(email,x);
+    }
+    catch(error){
+        co
+        return error;
+    }
+})
 
 async function main(){
     const apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
@@ -153,24 +189,8 @@ app.post("/custt",async (req,res) => {
 })*/
 
 //
+
 /*
-
-//Forget Password
-/*app.post("/forget-password",async(req, res)=>{
-    const {email} = req.body;
-    try{
-        const oldUser = await User.findOne({email});
-        if(!oldUser){
-            return res.json({status:"User Not Exists!!"});
-        }
-        const link = `http://localhost:5000/reset-password/${oldUser.email}/${oldUser._id}/${oldUser.pass}`;
-        console.log(link);
-    }
-    catch(error){
-        return error;
-    }
-})
-
 app.get("/reset-password/:email/:id/:pass",async(req, res)=>{
     const {email, id, pass } = req.params;
     res.render("index", { email: email, status: "Not Verified" });
