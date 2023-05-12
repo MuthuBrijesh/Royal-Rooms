@@ -9,8 +9,8 @@ const AddHotel = () =>{
   const [addr, setAddr] = useState("");
   const [phone, setPhone] = useState("");
   const [city, setCity] = useState("");
-  const [nation, setNation] = useState("");
-  console.log(addr);
+  const [image, setImage1] = useState("");
+  console.log(addr,image);
   const Reg = /^[A-Za-z ]*$/;
   const Regex = /^[0-9]*$/;
   function validate(e) {
@@ -18,7 +18,7 @@ const AddHotel = () =>{
     if(Reg.test(hoteln)){
       if(Regex.test(phone) && phone.length===10){
       if(Reg.test(city)){
-        if(Reg.test(nation)){
+        if(image !== ""){
           alert("Success");
         }else{
           alert("Invalid Nation");
@@ -42,11 +42,11 @@ const AddHotel = () =>{
         <label className='add'>Address</label>
         <input type='text' className='add' id='add' name='add' placeholder='Address' required="required" onChange={(e) => setAddr(e.target.value)}/>
         <label className='phn'>Phone</label>
-        <input type='number' className='phn' id='phn' name='phn' placeholder='Phone Number' required="required" onChange={(e) => setPhone(e.target.value)}/>
+        <input type='text' className='phn' id='phn' name='phn' placeholder='Phone Number' required="required" onChange={(e) => setPhone(e.target.value)}/>
         <label className='city'>City</label>
         <input type='text' className='city' id='city' name='city' placeholder='City' required="required" onChange={(e) => setCity(e.target.value)}/>
-        <label className='nation'>Nationality</label>
-        <input type='text' className='nation' id='nation' name='nation' placeholder='Nationality' required="required" onChange={(e) => setNation(e.target.value)}/>
+        <label className='url'>Image URL</label>
+        <input type='text' className='url' id='url' name='url' placeholder='Image URL 1' required="required" onChange={(e) => setImage1(e.target.value)}/>
         <input type='submit' className='sub' style={{color:'black',backgroundColor:'#ffffff',marginTop:20}} value='Submit'/>
       </form>
     </div>

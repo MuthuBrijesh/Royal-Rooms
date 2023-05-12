@@ -9,7 +9,6 @@ const Login = () => {
   const [password,setpass] = useState("");
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(email, password);
     fetch("http://localhost:5000/login", { method: "POST", crossDomain: true,
       headers: { "Content-Type": "application/json",
         Accept: "application/json", "Access-Control-Allow-Origin": "*", },
@@ -19,7 +18,6 @@ const Login = () => {
       .then((data) => {
         console.log(data, "userRegister");
         if (data.status === "ok") {
-          alert("Login Successful");
           sessionStorage.setItem("token", data.data);
           sessionStorage.setItem("AloggedIn", "true");
           window.location.href = "./Home";

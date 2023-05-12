@@ -35,7 +35,6 @@ const User = mongoose.model("UserInfo");
 
 app.post("/login",async (req,res) => {
     const {email,password}= req.body;
-    console.log(email,password);
     const user = await User.findOne({email});
     if(!user) {
         return res.json({ error: "User Not Found"});
@@ -52,6 +51,19 @@ app.post("/forget",async (req,res) => {
     if(!user) {
         return res.json({ error: "User Not Found"});
     }
+    const apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
+    const sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
+    sendSmtpEmail.to = [{ "email": email }];
+    sendSmtpEmail.templateId =1 ;
+    sendSmtpEmail.params = {
+        "Name": email,
+        "Otp": x
+      };
+    apiInstance.sendTransacEmail(sendSmtpEmail).then(() => {
+        console.log("Password reset email sent");
+    }).catch((err) => {
+    console.log(err);
+    });
     return res.json({status: "ok"});
 })
 

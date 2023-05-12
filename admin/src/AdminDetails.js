@@ -1,6 +1,6 @@
 import React, { useEffect ,useState} from 'react';
 import './CustDetails.css';
-import background from "./img/13.jpg";
+import background from "./img/14.jpg";
 
 const AdminDetails = () =>{
   const [data,setData]=useState([]);
@@ -24,23 +24,23 @@ const AdminDetails = () =>{
         <div className='row'>
       <div className='column'>
               <label className='fname'>First Name</label>
-              <input type='text' className='fname' id='fname' name='fname' placeholder='First Name' required="required" value={data.fname}/>
+              <input type='disable' className='fname' id='fname' name='fname' placeholder='First Name' required="required" value={data.fname}/>
               <label className='email'>Email</label>
-              <input type='email' className='email' id='email' name='email' placeholder='Email' required="required" value={data.email}/>
+              <input type='disable' className='email' id='email' name='email' placeholder='Email' required="required" value={data.email}/>
               <label className='pnumber'>Phone Number</label>
-              <input type='text' className='pnumber' id='pnumber' name='pnumber' placeholder='Phone Number' required="required" value={data.phone}/>
+              <input type='disable' className='pnumber' id='pnumber' name='pnumber' placeholder='Phone Number' required="required" value={data.phone}/>
               <label className='address'>Address</label>
-              <input type='text' className='address' id='address' name='address' placeholder='Address' required="required" value={data.address}/>
+              <input type='disable' className='address' id='address' name='address' placeholder='Address' required="required" value={data.address}/>
               </div>
       <div className='column'>
       <label className='lname'>Last Name</label>
-              <input type='text' className='lname' id='lname' name='lname' placeholder='Last Name' required="required" value={data.lname}/>
+              <input type='disable' className='lname' id='lname' name='lname' placeholder='Last Name' required="required" value={data.lname}/>
               <label className='age'>Age</label>
-              <input type='number' className='age' id='age' name='age' placeholder='Age' required="required" value={data.age}/>
+              <input type='disable' className='age' id='age' name='age' placeholder='Age' required="required" value={data.age}/>
               <label className='gender'>Gender</label>
-              <input type='text' className='gender' id='gender' name='gender' placeholder='gender' required="required"  value={data.gender}/>
+              <input type='disable' className='gender' id='gender' name='gender' placeholder='Gender' required="required"  value={data.gender}/>
               <label className='nation'>Nationality</label>
-              <input type='text' className='nation' id='nation' name='nation' placeholder='Nationality' required="required" value={data.nation}/>
+              <input type='disable' className='nation' id='nation' name='nation' placeholder='Nationality' required="required" value={data.nation}/>
               </div>
               </div>
       </form>

@@ -8,7 +8,6 @@ import pic3 from './img/p4.jpg';
 import pic4 from './img/p5.jpg';
 import pic5 from './img/p6.jpg';
 import pic6 from './img/p7.jpg';
-import exit from './img/exit.png';
 
 const Home = () => {
   const submit = (e) => {
@@ -78,46 +77,6 @@ const Home = () => {
         <img src={pic6} alt='Pic3' style={{height:300,width:500}}/>
         </div>
       </div>
-      </div>
-      <div className="hotelfea">
-      <h1  style={{marginTop:30,marginBottom:30,fontSize:50}}>Hotel Features</h1>
-      <div style={{color:'#e7dac7',backgroundColor:'#e7dac7',height:500,marginBottom:20,textAlign:'center',paddingTop:75,marginLeft:250,marginRight:250}}>
-      <div class="row">
-      <div class="col">
-        <img src={exit} style={{height:100,width:100,marginBottom:30}}/>
-        <h3>Fire Exit</h3>
-      </div>
-      <div class="col">
-      <img src={exit} style={{height:100,width:100,marginBottom:30}}/>
-        <h3>Fire Exit</h3>
-      </div>
-      <div class="col">
-      <img src={exit} style={{height:100,width:100,marginBottom:30}}/>
-        <h3>Fire Exit</h3>
-      </div>
-      <div class="col">
-      <img src={exit} style={{height:100,width:100,marginBottom:30}}/>
-        <h3>Fire Exit</h3>
-      </div>
-      </div>
-      <div class="row" >
-      <div class="col">
-      <img src={exit} style={{height:100,width:100,marginBottom:30}}/>
-        <h3>Fire Exit</h3>
-      </div>
-      <div class="col">
-      <img src={exit} style={{height:100,width:100,marginBottom:30}}/>
-        <h3>Fire Exit</h3>
-      </div>
-      <div class="col">
-      <img src={exit} style={{height:100,width:100,marginBottom:30}}/>
-        <h3>Fire Exit</h3>
-      </div>
-      <div class="col">
-      <img src={exit} style={{height:100,width:100,marginBottom:30}}/>
-        <h3>Fire Exit</h3>
-      </div>
-      </div></div>
       </div>
       <div className='edit1'>
         <div className='c'>

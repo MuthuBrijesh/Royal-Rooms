@@ -90,7 +90,7 @@ const Register = () => {
   }
   return (
     <div className='Register'  style={{ backgroundImage: `url(${background})`, height:950,backgroundSize: 'cover',marginTop:-88}}>
-      <form className='form1' onSubmit={handleSubmit}>
+      <form className='form1' onSubmit={handleSubmit} style={{paddingBottom:+30}}>
         <h3>Register Here</h3>
         <div className='row'>
         <div className='column'>

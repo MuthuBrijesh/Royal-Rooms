@@ -1,7 +1,7 @@
 .custdetails form{
     top: 10%;
     left:20%;
-    height:80%;
+    margin-bottom: 0;
     width: 60%;
     background-color: rgba(255,255,255,0.13);
     position: absolute;
@@ -21,7 +21,7 @@
     border: none;
 }
 .custdetails form h3{
-    font-size: 42px;
+    font-size: 60px;
     font-weight: bold;
     line-height: 42px;
     text-align: center;

@@ -1,7 +1,6 @@
 .Room form{
-    top: 10%;
+    top: 7%;
     left:30%;
-    height: 110%;
     width: 40%;
     background-color: rgba(255,255,255,0.13);
     position: absolute;
@@ -29,7 +28,7 @@
 
 .Room label{
     display: block;
-    margin-top: 30px;
+    margin-top: 15px;
     font-size: 18px;
     font-weight: bold;
 }
