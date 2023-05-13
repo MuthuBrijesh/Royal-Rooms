@@ -2,6 +2,7 @@
   position: absolute;
   top: 17%;
   left: 35%;
+  width:30%;
   margin-top: 2%;
 }
 .cust form *{
@@ -60,5 +61,17 @@
   margin-left:80px;
   margin-top: 8px;
   font-size: 16px;
+  font-weight: bold;
+}
+.cust select{
+  display: block;
+  height: 50px;
+  width: 100%;
+  background-color: rgba(255,255,255,0.07);
+  border-radius: 3px;
+  border-style: outset;
+  padding: 0 10px;
+  margin-top: 8px;
+  font-size: 18px;
   font-weight: bold;
 }

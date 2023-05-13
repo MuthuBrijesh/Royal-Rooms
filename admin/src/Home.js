@@ -1,4 +1,5 @@
 import background from "./img/15.jpg";
+import React, {useEffect, useState} from 'react'
 import './Home.css';
 import Carousel from 'react-bootstrap/Carousel';
 import pic from './img/p1.jpg';
@@ -10,6 +11,7 @@ import pic5 from './img/p6.jpg';
 import pic6 from './img/p7.jpg';
 
 const Home = () => {
+  const [data,setData]=useState([]);
   const submit = (e) => {
     window.location.href = "./AddRoom";
   };
@@ -22,6 +24,17 @@ const Home = () => {
   const submit3 = (e) => {
     window.location.href = "./Customer";
   };
+  useEffect (()=>{
+    fetch("http://localhost:5000/details", { method: "POST", crossDomain: true,
+    headers: { "Content-Type": "application/json",
+      Accept: "application/json", "Access-Control-Allow-Origin": "*", },
+    body: JSON.stringify(),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      setData(data.data); 
+    });
+  });
   return (
     <div style={{backgroundColor:'#F0F0E1'}}>
       <div className='home' style={{ backgroundImage: `url(${background})`,backgroundSize: 'cover', height:850}}>
@@ -43,10 +56,6 @@ const Home = () => {
         <div class="col">
           <h1>Hi</h1>
           <h4 style={{color:'#937047'}}>of Hotels</h4>
-        </div>
-        <div class="col">
-          <h1>Hi</h1>
-          <h4 style={{color:'#937047'}}>of Destination</h4>
         </div>
       </div>
       <div style={{backgroundColor:'#e7dac7',marginLeft:250,marginRight:270,marginTop:50}}>
@@ -70,8 +79,8 @@ const Home = () => {
       </div>
       <div class="row" style={{color:'#e7dac7',marginLeft:50}}>
         <div class="col" style={{height:300,backgroundColor:'#e7dac7'}}>
-            <h1 style={{color:'#937047',marginLeft:100,marginTop:70,fontSize:50}}>Click Here to </h1>
-            <button className='button-87' style={{marginLeft:140,marginTop:50,width:200}} onClick={submit3}> View Customer </button>
+            <h1 style={{color:'#937047',marginLeft:50,marginTop:70,fontSize:50}}>Click Here to </h1>
+            <button className='button-87' style={{marginLeft:100,marginTop:50,width:200}} onClick={submit3}> View Customer </button>
         </div>
         <div class="col">
         <img src={pic6} alt='Pic3' style={{height:300,width:500}}/>

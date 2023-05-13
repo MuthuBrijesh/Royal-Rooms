@@ -34,8 +34,8 @@ const Change = () => {
     }
   }
   return (
-    <div className='Change' style={{ backgroundImage: `url(${background})`, height:880,backgroundSize: 'cover',marginTop:-88}}>
-    <form  onSubmit={handleSubmit}>
+    <div className='Change' style={{ backgroundImage: `url(${background})`, height:880,backgroundSize: 'cover'}}>
+    <form  onSubmit={handleSubmit} style={{marginBottom:0}}>
     <h3>Change Password</h3>
     <label className='Otp'>OTP</label>
     <input type='text' className='Otp' id='otp' name='otp' placeholder='Enter the OTP' required="required" onChange={(e) => setotp(e.target.value)} />

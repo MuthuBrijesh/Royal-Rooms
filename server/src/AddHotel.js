@@ -1,29 +1,10 @@
 const mongoose = require("mongoose");
 
-const HotelDetails = new mongoose.Schema({
-        hoteln: {
-            type:String,
-            require:true 
-         },
-        addr: {
-            type:String,
-            require:true 
-         },
-        city: {
-            type:String,
-            require:true 
-         },
-        phone: {
-            type:String,
-            require:true 
-         },
-        nation:{
-            type:String,
-            require:true 
-         } ,
-        image:{
-           data:Buffer,
-           contentType: String 
-        } 
-    },{ collection: "HotelInfo", } );
-mongoose.model("HotelInfo", HotelDetails);
+const HotelDetailsScehma = new mongoose.Schema({
+        name: String,
+        addr: String,
+        phone: String,
+        city: String,
+        image: String, },
+    { collection: "HotelInfo", } );
+mongoose.model("HotelInfo", HotelDetailsScehma);

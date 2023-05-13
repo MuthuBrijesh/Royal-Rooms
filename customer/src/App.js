@@ -7,6 +7,8 @@ import Register from './Register';
 import ForgetPass2 from './ForgetPass2';
 import { BrowserRouter , Routes , Route } from 'react-router-dom';
 import Login from './Login';
+import Home from './Home';
+import Rooms from './Rooms';
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
           <Route path='/Register' element={<Register />}></Route>
           <Route path='/Forgetpass' element={<ForgetPass />}></Route>
           <Route path='/Forgetpass2' element={<ForgetPass2 />}></Route>
+          <Route path='/Home' element={<Home />}></Route>
+          <Route path='/Rooms' element={<Rooms />}></Route>
         </Routes>
       </div>
     </BrowserRouter>

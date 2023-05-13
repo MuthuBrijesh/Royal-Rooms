@@ -1,14 +1,11 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const multer = require('multer');
-//  const ImageModel = require('./image.model');
 app.use(express.json());
 const cors = require("cors");
 app.use(cors());
 app.set("view engine","ejs");
 app.engine('ejs', require('ejs').__express);
-//const nodemailer = require('nodemailer');
 const mongourl="mongodb+srv://rmuthubrijesh:RoyalRooms@roomslog.ccobpsk.mongodb.net/?retryWrites=true&w=majority";
 const SibApiV3Sdk = require('sib-api-v3-sdk');
 const defaultClient = SibApiV3Sdk.ApiClient.instance;
@@ -31,8 +28,14 @@ app.listen(5000, () => console.log('Server Started'));
 //Admin Details
 //Login
 require("./src/UserDetails");
+require("./src/AddHotel");
+require("./src/AddRoom");
 const User = mongoose.model("UserInfo");
+const Hotel = mongoose.model("HotelInfo");
+const Room = mongoose.model("RoomInfo");
 
+
+//login
 app.post("/login",async (req,res) => {
     const {email,password}= req.body;
     const user = await User.findOne({email});
@@ -45,6 +48,7 @@ app.post("/login",async (req,res) => {
     res.json({status: "error",error: "Invalid Password"})
 })
 
+//forget password
 app.post("/forget",async (req,res) => {
     const {email,x}= req.body;
     const user = await User.findOne({email});
@@ -54,11 +58,11 @@ app.post("/forget",async (req,res) => {
     const apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
     const sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
     sendSmtpEmail.to = [{ "email": email }];
-    sendSmtpEmail.templateId =1 ;
+    sendSmtpEmail.templateId =2 ;
     sendSmtpEmail.params = {
         "Name": email,
         "Otp": x
-      };
+    };
     apiInstance.sendTransacEmail(sendSmtpEmail).then(() => {
         console.log("Password reset email sent");
     }).catch((err) => {
@@ -77,6 +81,16 @@ app.post("/change",async (req,res) => {
     }
     return res.json({status: "ok"});
 })
+
+//HotelDetails
+app.post("/hoteldetails",async (req,res) => {
+    try{
+        const data=await Hotel.find();
+        res.send({ status: "OK",data:data});
+    } catch(error){
+        console.log(error);
+    }
+});
 
 //Register
 app.post("/register",async (req,res) => {
@@ -103,6 +117,47 @@ app.post("/register",async (req,res) => {
         res.send({send: "error"});
     }
 });
+
+//AddHotel
+app.post("/addhotel",async (req,res) => {
+    const {name,addr,phone,city,image} = req.body;
+    try{
+        const check = await Hotel.findOne({name});
+        if(check===null){
+            await Hotel.create( { name,addr,phone,city,image } );
+            res.send({ status: "ok"});
+        }
+    }catch(error){
+        res.send({send: "error"});
+    }
+});
+
+//Home
+/*app.post("/details",async (req,res) => {
+    try{
+        var room = await Room.find();
+        var cuser = await CUser.find();
+        var hotel = await Hotel.find();
+        room = room.length;
+        cuser = cuser.length;
+        hotel = hotel.length;
+        res.send({ status: "ok",room:room,cuser:cuser,hotel:hotel});
+    }catch(error){
+        res.send({send: "error"});
+    }
+});*/
+
+//AddRoom
+app.post("/addroom",async (req,res) => {
+    const {hotel,maxc,roomt,desc,cusine,cost,image1,image2,image3,image4} = req.body;
+    try{
+        await Room.create( {hotel,maxc,roomt,desc,cusine,cost,image1,image2,image3,image4} );
+        res.send({ status: "ok"});
+    }catch(error){
+        res.send({send: "error"});
+    }
+});
+
 //Admin Profile
 app.post("/retadmin",async (req,res) => {
     try{
@@ -131,21 +186,22 @@ app.post("/forget-password",async(req, res)=>{
     }
 })
 
-async function main(){
-    const apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
-          const sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
-          sendSmtpEmail.to = [{ "email": "953620104030@ritrjpm.ac.in" }];
-          sendSmtpEmail.templateId =1 ;
-          apiInstance.sendTransacEmail(sendSmtpEmail).then(() => {
-            console.log("Password reset email sent");
-          }).catch((err) => {
-            console.log(err);
-          });
-}
-//main()
-
 //--------------------------------------------------------------------------------------------------------------------------------------
 //Customer Details 
+
+//Login
+app.post("/clogin",async (req,res) => {
+    const {email,password}= req.body;
+    const check = await CUser.findOne({email});
+    if(!check) {
+        return res.json({ error: "User Not Found"});
+    }
+    if(password===check.pass){
+        return res.json({ status: "ok",data :email});
+    }
+    res.json({status: "error",error: "Invalid Password"})
+})
+
 //Register
 require("./src/CustDetails");
 const CUser = mongoose.model("CustInfo");
@@ -181,13 +237,14 @@ app.post("/custret",async (req,res) => {
     return res.send({ status: "OK",data:user})
 })
 
+//Reterive Customer Details
 app.post("/custt",async (req,res) => {
     const {email}= req.body;
-    const user = await CUser.findOne({email});
-    if(user===null) {
-        return res.send({ error: "User Not Found"});
+    const user1 = await CUser.findOne({email});
+    if(!user1) {
+        return res.json({ error: "User Not Found"});
     }
-    return res.send({ status: "OK",data :user});
+    return res.send({ status: "OK",data :user1});
 })
 
 //Reterive User
@@ -221,35 +278,14 @@ app.post("/reset-password/:email/:id/:pass",async(req, res)=>{
         console.log(error);
         res.json({ status: "Something Went Wrong" });
       }
-})
-
-// storage
-/*const Storage = multer.diskStorage({
-    destination: "uploads",
-    filename: (req,file,cb) =>{
-        cb(null,file.originalname);
-    },
-});
-
-const upload = multer({
-    storage:Storage
-}).single('testImage')
-
-app.post('/upload',(req,res)=>{
-    upload(req,res,(err)=>{
-        if(err){
-            console.log(err);
-        }
-        else{
-            const newImage = new ImageModel({
-                name: req.body.name,
-                image:{
-                    data:req.file.filename,
-                    contentType: "image/png",
-                },
-            });
-            newImage.save().then(()=>res.send("Successfully Upload"))
-            .catch(err=>console.log(err))
-        }
-    })
 })*/
+
+//HotelDetails
+app.post("/roomdetails",async (req,res) => {
+    try{
+        const data=await Room.find();
+        res.send({ status: "OK",data:data});
+    } catch(error){
+        console.log(error);
+    }
+});

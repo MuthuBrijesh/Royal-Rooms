@@ -1,7 +1,7 @@
 .Room form{
-    top: 7%;
-    left:30%;
-    width: 40%;
+    top: 10%;
+    left:10%;
+    width: 80%;
     background-color: rgba(255,255,255,0.13);
     position: absolute;
     margin-top: 2%;
@@ -20,7 +20,7 @@
     border: none;
 }
 .Room form h3{
-    font-size: 32px;
+    font-size: 50px;
     font-weight: bold;
     line-height: 42px;
     text-align: center;
@@ -28,7 +28,7 @@
 
 .Room label{
     display: block;
-    margin-top: 15px;
+    margin-top: 30px;
     font-size: 18px;
     font-weight: bold;
 }
@@ -56,11 +56,12 @@
     font-size: 18px;
     font-weight: bold;
 }
-option {
-    height: 50px;
+select::after{
+    display: block;
+    height: 100px;
     width: 100%;
+    background-color: black;
     color:black;
-    background-color: rgba(255,255,255,0.07);
     border-radius: 3px;
     border-style: outset;
     padding: 0 10px;
@@ -68,7 +69,6 @@ option {
     font-size: 18px;
     font-weight: bold;
 }
-
 .Room ::placeholder{
     color: white;
 }

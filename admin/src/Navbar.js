@@ -15,7 +15,8 @@ function Navbar() {
                 <Link to="./AdminDetails"><li>Profile</li></Link>
                 <Link to="./AddHotel"><li>Add Hotel</li></Link>
                 <Link to="./Home"><li>Home</li></Link> 
-                <Link to="./Customer"><li>Customer</li></Link>           
+                <Link to="./Customer"><li>Customer</li></Link>  
+                <Link to="./AddRoom"><li>AddRoom</li></Link>           
             </ul>
         </div>
     )

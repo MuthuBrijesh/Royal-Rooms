@@ -11,6 +11,7 @@ function Navbar() {
                 <h3>Royal Golden</h3>
                 <Link to="./Login"><li>Login</li></Link>
                 <Link to="./Register"><li>Register</li></Link> 
+                <Link to="./Rooms"><li>Rooms</li></Link> 
             </ul>
         </div>
     )
