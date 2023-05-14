@@ -44,6 +44,7 @@ function Rooms1() {
     .then((res) => res.json())
     .then((data) => {
       setData(data.data); 
+      sessionStorage.setItem("room", data.data);
       hotelfun();
     });
   });
@@ -58,6 +59,7 @@ function Rooms1() {
     .then((data) => {
       if (data.status === "OK") {
       setHotel(data.data);
+      sessionStorage.setItem("hotel", data.data);
       }else{
         console.log("Hi");
       }

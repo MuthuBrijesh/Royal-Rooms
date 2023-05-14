@@ -31,10 +31,12 @@ require("./src/UserDetails");
 require("./src/AddHotel");
 require("./src/AddRoom");
 require("./src/CustDetails");
+require("./src/BookDetails");
 const User = mongoose.model("UserInfo");
 const Hotel = mongoose.model("HotelInfo");
 const Room = mongoose.model("RoomInfo");
 const CUser = mongoose.model("CustInfo");
+const Book = mongoose.model("BookInfo");
 
 
 //Login

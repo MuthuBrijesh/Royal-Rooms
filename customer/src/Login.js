@@ -15,9 +15,9 @@ function Try2() {
       .then((data) => {
         console.log(data,"userRegister");
         if (data.status === "ok") {
-          sessionStorage.setItem("ctoken", data.data);
+          sessionStorage.setItem("ctoken", email);
           sessionStorage.setItem("CloggedIn", "true");
-          window.location.href = "./Home";
+          window.location.href = "./Rooms";
         }
         else{
           alert("Invalid Credentials");

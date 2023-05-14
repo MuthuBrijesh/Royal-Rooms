@@ -8,6 +8,8 @@ import Login from './Login';
 import Home from './Home';
 import Rooms from './Rooms';
 import Rooms1 from './Rooms1';
+import Profile from './Profile';
+import Logout from './Logout';
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
           <Route path='/Home' element={<Home />}></Route>
           <Route path='/Rooms' element={<Rooms />}></Route>
           <Route path='/Rooms1' element={<Rooms1 />}></Route>
+          <Route path='/Profile' element={<Profile />}></Route>
+          <Route path='/Logout' element={<Logout />}></Route>
         </Routes>
       </div>
     </BrowserRouter>

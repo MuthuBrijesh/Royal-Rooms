@@ -4,18 +4,33 @@ import logo from './logo.png';
 import { Link } from 'react-router-dom'
 
 function Navbar() {
+    const Alogin=sessionStorage.getItem("CloggedIn");
+    if(Alogin === "true"){
     return (
         <div className='Nav'>
             <ul>     
                 <img src={logo} alt="Logo" /> 
-                <h3>Royal Golden</h3>
-                <Link to="./Login"><li>Login</li></Link>
-                <Link to="./Register"><li>Register</li></Link> 
+                <h3>Royal Rooms</h3>
                 <Link to="./Rooms"><li>Rooms</li></Link> 
-                <Link to="./Rooms1"><li>RoomDetails</li></Link> 
+                <Link to="./Rooms1"><li>RoomDetails</li></Link>
+                <Link to="./Profile"><li>Profile</li></Link> 
+                <Link to="./Logout"><li>Logout</li></Link>            
             </ul>
         </div>
     )
+    }
+    else{
+        return (
+            <div className='Nav'>
+                <ul>     
+                    <img src={logo} alt="Logo" /> 
+                    <h3>Royal Rooms</h3>
+                    <Link to="./Login"><li>Login</li></Link>
+                <Link to="./Register"><li>Register</li></Link>            
+                </ul>
+            </div>
+        )
+    }
 }
 
 export default Navbar

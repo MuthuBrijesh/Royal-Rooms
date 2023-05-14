@@ -73,12 +73,12 @@ const AddHotel = () =>{
         </select>
         <label for="type">Room Type</label>
         <select id="type" name="type" onChange={(e) => setRoomT(e.target.value)} required="required">
-            <option style={{backgroundColor:'black'}} value="single">Single Room</option>
-            <option style={{backgroundColor:'black'}} value="double">Double Room</option>
-            <option style={{backgroundColor:'black'}} value="trible">Trible Room</option>
-            <option style={{backgroundColor:'black'}} value="quad">Quad Room</option>
-            <option style={{backgroundColor:'black'}} value="suite">Suite Room</option>
-            <option style={{backgroundColor:'black'}} value="disabled">Disabled Room</option>
+            <option style={{backgroundColor:'black'}} value="Single">Single Room</option>
+            <option style={{backgroundColor:'black'}} value="Double">Double Room</option>
+            <option style={{backgroundColor:'black'}} value="Trible">Trible Room</option>
+            <option style={{backgroundColor:'black'}} value="Quad">Quad Room</option>
+            <option style={{backgroundColor:'black'}} value="Suite">Suite Room</option>
+            <option style={{backgroundColor:'black'}} value="Disabled">Disabled Room</option>
         </select>
         <label className='cus'>Cuisines</label>
         <input type='text' className='cus' id='cus' name='cus' placeholder='Cusine' required="required" onChange={(e) => setCus(e.target.value)} />
