@@ -26,16 +26,18 @@ app.listen(5000, () => console.log('Server Started'));
 
 //--------------------------------------------------------------------------------------------------------------------------------------
 //Admin Details
-//Login
+
 require("./src/UserDetails");
 require("./src/AddHotel");
 require("./src/AddRoom");
+require("./src/CustDetails");
 const User = mongoose.model("UserInfo");
 const Hotel = mongoose.model("HotelInfo");
 const Room = mongoose.model("RoomInfo");
+const CUser = mongoose.model("CustInfo");
 
 
-//login
+//Login
 app.post("/login",async (req,res) => {
     const {email,password}= req.body;
     const user = await User.findOne({email});
@@ -48,7 +50,7 @@ app.post("/login",async (req,res) => {
     res.json({status: "error",error: "Invalid Password"})
 })
 
-//forget password
+//Forget Password
 app.post("/forget",async (req,res) => {
     const {email,x}= req.body;
     const user = await User.findOne({email});
@@ -82,13 +84,30 @@ app.post("/change",async (req,res) => {
     return res.json({status: "ok"});
 })
 
-//HotelDetails
+//Hotel Details
 app.post("/hoteldetails",async (req,res) => {
     try{
         const data=await Hotel.find();
         res.send({ status: "OK",data:data});
     } catch(error){
         console.log(error);
+    }
+});
+
+//HotelD
+app.post("/hoteldet",async (req,res) => {
+    const {name} = req.body;
+    //console.log(name);
+    try{
+        const check = await Hotel.findOne({name});
+        if(check===null){
+            res.send({ status: "Hotel Does not Exist"});
+        }
+        else{
+            res.send({ status: "OK", data:check});
+        }
+    }catch(error){
+        res.send({status: "error"});
     }
 });
 
@@ -112,23 +131,31 @@ app.post("/register",async (req,res) => {
                 cpass
             });
             res.send({ status: "ok"});
+        }else{
+            res.send({status: "error"});
         }
     } catch(error){
         res.send({send: "error"});
     }
 });
 
-//AddHotel
+//Add Hotel
 app.post("/addhotel",async (req,res) => {
     const {name,addr,phone,city,image} = req.body;
+    console.log("Hotel Add");
     try{
         const check = await Hotel.findOne({name});
         if(check===null){
             await Hotel.create( { name,addr,phone,city,image } );
+            console.log("Ok");
             res.send({ status: "ok"});
         }
+        else{
+            res.send({status: "error"});
+        }
     }catch(error){
-        res.send({send: "error"});
+        console.lof('error');
+        res.send({status: "error"});
     }
 });
 
@@ -203,9 +230,6 @@ app.post("/clogin",async (req,res) => {
 })
 
 //Register
-require("./src/CustDetails");
-const CUser = mongoose.model("CustInfo");
-
 app.post("/cregister",async (req,res) => {
     const {fname,lname,email,phone,address,age,gender,nation,pass} = req.body;
     try{
@@ -228,6 +252,7 @@ app.post("/cregister",async (req,res) => {
         res.send({send: "error"});
     }
 });
+
 //Reterive All Emails 
 app.post("/custret",async (req,res) => {
     const user = await CUser.find({},{email:1,_id:0});
@@ -246,6 +271,27 @@ app.post("/custt",async (req,res) => {
     }
     return res.send({ status: "OK",data :user1});
 })
+
+//RoomDetails(List of Rooms)
+app.post("/roomdetails",async (req,res) => {
+    try{
+        const data=await Room.find();
+        res.send({ status: "OK",data:data});
+    } catch(error){
+        console.log(error);
+    }
+});
+
+//RoomDetailsPage
+app.post("/roomsd",async (req,res) => {
+    const _id= "645fc4dfc1998d72acd84ebe";
+    try{
+        const data=await Room.findOne({_id});
+        res.send({ status: "OK",data:data});
+    } catch(error){
+        console.log(error);
+    }
+});
 
 //Reterive User
 /*app.post("/custr",async (req,res) => {
@@ -279,13 +325,3 @@ app.post("/reset-password/:email/:id/:pass",async(req, res)=>{
         res.json({ status: "Something Went Wrong" });
       }
 })*/
-
-//HotelDetails
-app.post("/roomdetails",async (req,res) => {
-    try{
-        const data=await Room.find();
-        res.send({ status: "OK",data:data});
-    } catch(error){
-        console.log(error);
-    }
-});

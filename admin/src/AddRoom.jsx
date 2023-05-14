@@ -16,7 +16,7 @@ const AddHotel = () =>{
   const [image3, setImage3] = useState(""); 
   const [image4, setImage4] = useState("");
   console.log(image1,image2,image3,image4,cusine,hotel); 
-  const Reg = /^[A-Za-z ]*$/;
+  //const Reg = /^[A-Za-z ]*$/;
   const Regex = /^[0-9]*$/;
   const [data,setData]=useState([]);
   useEffect (()=>{
@@ -33,13 +33,16 @@ const AddHotel = () =>{
   function validate(e) {
     e.preventDefault();
     console.log(maxc,roomt);
+    if(desc.length>=300){
       if(Regex.test(cost) && (cost>0) && (cost<10000000)){
-        alert("Success");
         fun();
       }else{
         alert("Invalid Amount");
         }
+      }else{
+        alert("Description length should be less than 300");
       }
+    }
       function fun(){
         fetch("http://localhost:5000/addroom",{ method:"POST", crossDomain:true,
           headers:{ "Content-Type":"application/json",Accept:"application/json",
@@ -62,6 +65,7 @@ const AddHotel = () =>{
           <div class="col">
           <label for="m_count">Hotel Name</label>
         <select id="m_count" name="m_count" onChange={(e) => setHotel(e.target.value)} required="required">
+          <option>Select a Hotel</option>
           { data.map((i)=>{
             return (<option style={{backgroundColor:'black'}} value={i.name}>{i.name}</option>);
             })
@@ -76,7 +80,7 @@ const AddHotel = () =>{
             <option style={{backgroundColor:'black'}} value="suite">Suite Room</option>
             <option style={{backgroundColor:'black'}} value="disabled">Disabled Room</option>
         </select>
-        <label className='cus'>Cusine</label>
+        <label className='cus'>Cuisines</label>
         <input type='text' className='cus' id='cus' name='cus' placeholder='Cusine' required="required" onChange={(e) => setCus(e.target.value)} />
         <label className='url'>Image URL</label>
         <input type='text' className='url1' id='url1' name='url1' placeholder='Image URL 1' required="required" onChange={(e) => setImage1(e.target.value)}/><br></br>

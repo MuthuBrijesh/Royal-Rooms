@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const RoomDetailsScehma = new mongoose.Schema({
-        name: String,
+        hotel: String,
         maxc: String,
         roomt: String,
         desc: String,

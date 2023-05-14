@@ -18,11 +18,30 @@ const AddHotel = () =>{
     if(Reg.test(name)){
       if(Regex.test(phone) && phone.length===10){
       if(Reg.test(city)){
-        if(image !== ""){
-            hote();
-        }else{
-          alert("Invalid Nation");
-        }
+          fetch("http://localhost:5000/addhotel",{
+            method:"POST",
+            crossDomain:true,
+            headers:{
+            "Content-Type":"application/json",Accept:"application/json",
+            "Access-Control-Allow-Origin":"*",
+            },
+            body: JSON.stringify({
+                name,
+                addr,
+                phone,
+                city,
+                image
+            }),
+          })
+          .then((res)=>res.json())
+          .then((data)=>{console.log(data,"UserRegister");
+          if (data.status === "ok") {
+            alert("Hotel Added Succesfully");
+          }
+          else{
+            alert("Hotel Already Exist");
+          }
+        });
       }else{
         alert("Invalid City");
       }
@@ -32,32 +51,6 @@ const AddHotel = () =>{
     }else{
       alert("Invalid Hotel Name");
     }
-  }
-  function hote(){
-    fetch("http://localhost:5000/addhotel",{
-        method:"POST",
-        crossDomain:true,
-        headers:{
-        "Content-Type":"application/json",Accept:"application/json",
-        "Access-Control-Allow-Origin":"*",
-        },
-        body: JSON.stringify({
-            name,
-            addr,
-            phone,
-            city,
-            image
-        }),
-      })
-      .then((res)=>res.json())
-      .then((data)=>{console.log(data,"UserRegister");
-      if (data.status === "ok") {
-        alert("Hotel Added Succesfully");
-      }
-      else{
-        alert("Hotel Already Exist");
-      }
-    });
   }
   return(
     <div  className='hotel' style={{ backgroundImage: `url(${background123})`,backgroundSize: 'cover', height:850,marginTop:-100}}>
