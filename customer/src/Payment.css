@@ -1,0 +1,62 @@
+.Pay {
+    border-radius: 2%;
+}
+.Pay .column1 {
+    float: left;
+    width: 63%;
+    padding: 5px;
+  }
+.Pay .column {
+  float: left;
+  width: 49%;
+  padding: 5px;
+}
+.Pay .column2 {
+  float: left;
+  width: 29%;
+  padding: 5px;
+  }
+ .Pay .row::after {
+    content: '';
+    clear: both;
+    display: table;
+    height:300;
+  }
+  .Pay .button-87 {
+    margin-top: 10px;
+    padding: 15px 30px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    border-radius: 10px;
+    display: block;
+    border: 0px;
+    font-weight: 700;
+    box-shadow: 0px 0px 14px -7px #f09819;
+    background-image: linear-gradient(45deg, #FF512F 0%, #F09819  51%, #FF512F  100%);
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  
+  .Pay .button-87:hover {
+    background-position: right center;
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .Pay .button-87:active {
+    transform: scale(0.95);
+  }
+.Pay label{
+  color:black;
+  font-size: large;
+  font-weight: bold;
+}
+.Pay input{
+  font-size: large;
+  font-weight: bold;
+} 

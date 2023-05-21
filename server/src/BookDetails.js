@@ -2,10 +2,13 @@ const mongoose = require("mongoose");
 
 const BookDetailsScehma = new mongoose.Schema({
         name: String,
-        hotel:String,
+        hname:String,
         phone: String,
-        date:String,
-        night:String,
-        image: String, },
+        rdate:String,
+        nfdate:String,
+        image: String,
+        amount: String,
+        bookid: String,
+        payment: String},
     { collection: "BookInfo", } );
 mongoose.model("BookInfo", BookDetailsScehma);

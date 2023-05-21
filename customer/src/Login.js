@@ -16,6 +16,8 @@ function Try2() {
         console.log(data,"userRegister");
         if (data.status === "ok") {
           sessionStorage.setItem("ctoken", email);
+          sessionStorage.setItem("CustName",data.data.fname);
+          sessionStorage.setItem("CustPhone",data.data.phone);
           sessionStorage.setItem("CloggedIn", "true");
           window.location.href = "./Rooms";
         }

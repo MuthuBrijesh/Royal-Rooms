@@ -6,10 +6,11 @@ import ForgetPass2 from './ForgetPass2';
 import { BrowserRouter , Routes , Route } from 'react-router-dom';
 import Login from './Login';
 import Home from './Home';
-import Rooms from './Rooms';
-import Rooms1 from './Rooms1';
+import Rooms from './ListofRooms';
+import Rooms1 from './RoomsDetails';
 import Profile from './Profile';
 import Logout from './Logout';
+import Payment from './Payment';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path='/Rooms1' element={<Rooms1 />}></Route>
           <Route path='/Profile' element={<Profile />}></Route>
           <Route path='/Logout' element={<Logout />}></Route>
+          <Route path='/Payment' element={<Payment />}></Route>
         </Routes>
       </div>
     </BrowserRouter>

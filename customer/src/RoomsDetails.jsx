@@ -1,54 +1,53 @@
 import React from 'react';
-import './Rooms1.css';
-import { useState , useEffect} from "react";
+import './RoomsDetails.css';
+import { useState ,useEffect} from "react";
 
-/**const id ="645fc4dfc1998d72acd84ebe";    
- * <div className='container'>
-      <h2 className='desc'>About the Venue</h2>
-      <h3 style={{border: 0,paddingBottom: 7,fontWeight: 500,fontSize: 18,letterSpacing: 0.3}}>What to Expect</h3>
-      <hr></hr>
-    </div> */
-    /*const [data,setData]=useState([]);
-    useEffect (()=>{
-      fetch("http://localhost:5000/roomdetails", { method: "POST", crossDomain: true,
-      headers: { "Content-Type": "application/json",
-        Accept: "application/json", "Access-Control-Allow-Origin": "*", },
-      body: JSON.stringify(),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data,data);
-        setData(data.data); 
-      });
-    });*/
 function Rooms1() {
+  //Date Validation
   const currDate = new Date().toLocaleDateString();
   var curr = currDate.split("/");
   if(curr[0]<9){
     curr[0]='0'+curr[0];
   }
+  var bookid;
+  var [bookid,setBookID]=useState("");
   curr[3]=(parseInt(curr[2])+1).toString();
   var date =curr[2]+'-'+curr[0]+'-'+curr[1];
   var mdate = curr[3]+'-'+curr[0]+'-'+curr[1];
   const [rdate,setRDate]=useState("");
-  const [nfdate,setNFDate]=useState("");
+  var [nfdate,setNFDate]=useState("");
   const Regex = /^[0-9]*$/;
+  //Room Data
   const [data,setData]=useState([]);
+  //Hotel Data
   const [hotel,setHotel]=useState([]);
   useEffect (()=>{
-    fetch("http://localhost:5000/roomsd", { method: "POST", crossDomain: true,
+  const _id=sessionStorage.getItem("hotelid");
+  fetch("http://localhost:5000/roomsd", { method: "POST", crossDomain: true,
     headers: { "Content-Type": "application/json",
-      Accept: "application/json", "Access-Control-Allow-Origin": "*", },
-    body: JSON.stringify(),
+    Accept: "application/json", "Access-Control-Allow-Origin": "*", },
+    body: JSON.stringify({_id}),
   })
-    .then((res) => res.json())
-    .then((data) => {
-      setData(data.data); 
-      sessionStorage.setItem("room", data.data);
-      hotelfun();
-    });
+  .then((res) => res.json())
+  .then((data) => {
+    setData(data.data);
+    fun();
   });
-  function hotelfun(){
+});
+useEffect (()=>{
+  fetch("http://localhost:5000/countbooking", { method: "POST", crossDomain: true,
+  headers: { "Content-Type": "application/json",
+    Accept: "application/json", "Access-Control-Allow-Origin": "*", },
+  body: JSON.stringify(),
+})
+  .then((res) => res.json())
+  .then((data) => {
+    setBookID(data.data);
+  });
+});
+bookid =parseInt(bookid);
+bookid =(bookid + 300000).toString();
+function fun(e) {
     const name = data.hotel;
     fetch("http://localhost:5000/hoteldet", { method: "POST", crossDomain: true,
     headers: { "Content-Type": "application/json",
@@ -59,16 +58,45 @@ function Rooms1() {
     .then((data) => {
       if (data.status === "OK") {
       setHotel(data.data);
-      sessionStorage.setItem("hotel", data.data);
       }else{
-        console.log("Hi");
+        console.log(data.status);
       }
     });
-  }
+  };
+  var cost = parseInt(data.cost);
+  var nf = parseInt(nfdate);
+  var amount =( cost * nf);
+  amount = amount.toString();
+  const name =sessionStorage.getItem("CustName");
+  const phone =sessionStorage.getItem("CustPhone");
+  const hname = data.hotel;
+  const image = data.image1;
+  const payment=null;
+  console.log(bookid);
+  sessionStorage.setItem("BAmount",amount);
+  sessionStorage.setItem("BHname",hname);
+  sessionStorage.setItem("BImage",image);
+  sessionStorage.setItem("BNG",nfdate);
+  sessionStorage.setItem("BDate",rdate);
+  sessionStorage.setItem("BookID",bookid);
   function submit(){
     if(rdate!==""){
       if(Regex.test(nfdate) && nfdate!==""){
-        alert("Booked Succesfully");
+        fetch("http://localhost:5000/addbooking", { method: "POST", crossDomain: true,
+        headers: { "Content-Type": "application/json",
+          Accept: "application/json", "Access-Control-Allow-Origin": "*", },
+        body: JSON.stringify({name,hname,phone,rdate,nfdate,image,amount,bookid,payment}),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.status === "OK") {
+            alert("Booked Succesfully");
+            window.location.href="./Payment";
+          }else{
+            alert("Error");
+            console.log(data.status);
+          }
+        });
       }else{
         alert("Invalid Nights");
       }
@@ -116,7 +144,6 @@ function Rooms1() {
       </div>
       </div>
   </div>
-
   )
 }
 

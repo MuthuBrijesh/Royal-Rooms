@@ -78,8 +78,8 @@ app.post("/forget",async (req,res) => {
 app.post("/change",async (req,res) => {
     const {email,password,cpassword}= req.body;
     var myquery = { email: email };
-    var newvalues = { $set: {pass: password, cpass: cpassword } };
-    const user = await User.updateOne({myquery},{newvalues});
+    var newvalues = {pass: password, cpass: cpassword };
+    const user = await User.updateOne(myquery,newvalues);
     if(!user) {
         return res.json({ error: "User Not Found"});
     }
@@ -218,7 +218,7 @@ app.post("/forget-password",async(req, res)=>{
 //--------------------------------------------------------------------------------------------------------------------------------------
 //Customer Details 
 
-//Login
+//Customer Login
 app.post("/clogin",async (req,res) => {
     const {email,password}= req.body;
     const check = await CUser.findOne({email});
@@ -226,12 +226,12 @@ app.post("/clogin",async (req,res) => {
         return res.json({ error: "User Not Found"});
     }
     if(password===check.pass){
-        return res.json({ status: "ok",data :email});
+        return res.json({ status: "ok",data :check});
     }
     res.json({status: "error",error: "Invalid Password"})
 })
 
-//Register
+//Customer Register
 app.post("/cregister",async (req,res) => {
     const {fname,lname,email,phone,address,age,gender,nation,pass} = req.body;
     try{
@@ -255,7 +255,7 @@ app.post("/cregister",async (req,res) => {
     }
 });
 
-//Reterive All Emails 
+//Reterive All Customer Emails 
 app.post("/custret",async (req,res) => {
     const user = await CUser.find({},{email:1,_id:0});
     if(!user) {
@@ -264,7 +264,7 @@ app.post("/custret",async (req,res) => {
     return res.send({ status: "OK",data:user})
 })
 
-//Reterive Customer Details
+//Reterive Customer Details for an email
 app.post("/custt",async (req,res) => {
     const {email}= req.body;
     const user1 = await CUser.findOne({email});
@@ -274,7 +274,7 @@ app.post("/custt",async (req,res) => {
     return res.send({ status: "OK",data :user1});
 })
 
-//RoomDetails(List of Rooms)
+//RoomDetails(List of Rooms) Find all Room in DB
 app.post("/roomdetails",async (req,res) => {
     try{
         const data=await Room.find();
@@ -284,9 +284,9 @@ app.post("/roomdetails",async (req,res) => {
     }
 });
 
-//RoomDetailsPage
+//RoomDetailsPage Details of one Page using _id
 app.post("/roomsd",async (req,res) => {
-    const _id= "645fc4dfc1998d72acd84ebe";
+    const {_id}= req.body;
     try{
         const data=await Room.findOne({_id});
         res.send({ status: "OK",data:data});
@@ -295,35 +295,39 @@ app.post("/roomsd",async (req,res) => {
     }
 });
 
-//Reterive User
-/*app.post("/custr",async (req,res) => {
-    const {email}= req.body;
-    const user = await CUser.findOne({email});
-    if(user===null) {
-        return res.send({ error: "User Not Found"});
+//Add Booking 
+app.post("/addbooking",async (req,res) => {
+    const {name,hname,phone,rdate,nfdate,image,amount,bookid,payment} = req.body;
+    console.log(bookid);
+    try{
+        await Book.create( {name,hname,phone,rdate,nfdate,image,amount,bookid,payment} );
+        console.log("Ok");
+        res.send({ status: "OK"});
+    }catch(error){
+        res.send({status: "error"});
     }
-    return res.send({ status: "OK",data :email});
-})*/
+});
 
-//
-
-/*
-app.get("/reset-password/:email/:id/:pass",async(req, res)=>{
-    const {email, id, pass } = req.params;
-    res.render("index", { email: email, status: "Not Verified" });
-})
-
-app.post("/reset-password/:email/:id/:pass",async(req, res)=>{
-    const {email, id, pass } = req.params;
-    const { password } = req.body;
-    console.log(password)
-    try {
-        await User.updateOne( { _id: id,},
-          { $set: { pass: password, },$set: { cpass: password, }, }
-        );
-        res.render("index", { email: email, status: "Verified" });
-      } catch (error) {
+//Reterive all Booking
+app.post("/countbooking",async (req,res) => {
+    try{
+        var data=await Book.find().count();
+        //console.log(data);
+        res.send({ status: "OK",data:data});
+    } catch(error){
         console.log(error);
-        res.json({ status: "Something Went Wrong" });
-      }
-})*/
+    }
+});
+
+app.post("/pay",async (req,res) => {
+    var {bookid}= req.body;
+    bookid = bookid-1;
+    console.log(bookid);
+    var myquery = { bookid: bookid};
+    var newvalues = { payment:"true"};
+    const user = await Book.updateOne(myquery,newvalues);
+    if(!user) {
+        return res.json({ error: "User Not Found"});
+    }
+    return res.json({status: "ok"});
+})

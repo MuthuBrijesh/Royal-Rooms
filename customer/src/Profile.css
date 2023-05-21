@@ -1,0 +1,61 @@
+.Regi form{
+    width: 70%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    margin-top: 2%;
+    padding: 50px 35px;
+    padding-bottom: 50px;
+}
+.Regi form *{
+    font-family: 'Poppins',sans-serif;
+    color: black;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+}
+
+.Regi form h3{
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 42px;
+    text-align: center;
+}
+.Regi button{
+    display: block;
+    height: 40px;
+    width: 100%;
+    background-color: black;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 16px;
+    color: white;
+    font-weight: bold;
+}
+.Regi ::placeholder{
+    color: black;
+}
+.Regi button:hover{
+    background-color: #ed3419;
+}
+
+
+.Regi label{
+    display: block;
+    margin-top: 30px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.Regi input{
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 10px;
+    border-color:black;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 16px;
+    font-weight: bold;
+}

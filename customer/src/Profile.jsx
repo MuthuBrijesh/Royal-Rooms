@@ -1,4 +1,4 @@
-import './Register.css';
+import './Profile.css';
 import { useState,useEffect } from "react";
 
 function Try1() {
@@ -14,31 +14,23 @@ function Try1() {
       .then((data) => {
         setData(data.data);    
       });
-    },[]);
+    });
     return(
-        <div className='Register'>
-            <form>
-            <h3>Create Account</h3>
+        <div className='Regi'>
+            <form  style={{boxShadow:' 0 16px 32px 0 rgba(0,0,0,0.2)',backgroundColor:'whitesmoke'}}>
+            <h3 style={{fontSize:50}}>Profile</h3>
             <div className="row">
                 <div className="col">
-                <label className='fname'>First Name</label>
-            <input type='text' className='fname' id='fname' name='fname' required="required" value={data.fname}/>
-                <label className='Email'>Email</label>
-            <input type='email' className='Email' id='email' name='email' required="required"  value={data.email}/>
-            <label className='gender'>Gender</label>
-            <input type='email' className='Email' id='email' name='email' required="required"  value={data.gender}/>
-            <label className='addr'>Address</label>
-            <input type='text' className='addr' id='addr' name='addr' required="required" value={data.address}/>
+                <label className='fname'>First Name : {data.fname}</label>
+                <label className='Email'>Email : {data.email}</label>
+            <label className='gender'>Gender : {data.gender}</label>
+            <label className='addr'>Address : {data.address}</label>
                 </div>
                 <div className="col">
-                <label className='lname'>Last Name</label>
-            <input type='text' className='lname' id='lname' name='lname' required="required" value={data.lname}/>
-                <label className='phone'>Phone Number</label>
-            <input type='text' className='phone' id='phone' name='phone' required="required" value={data.phone}/>
-            <label className='age'>Age</label>
-            <input type='text' className='age' id='age' name='age' required="required" value={data.age}/>
-            <label className='nation'>Nationality</label>
-            <input type='text' className='nation' id='nation' name='nation' required="required" value={data.nation}/>
+                <label className='lname'>Last Name : {data.lname}</label>
+                <label className='phone'>Phone Number : {data.phone} </label>
+            <label className='age'>Age : {data.age}</label>
+            <label className='nation'>Nationality : {data.nation}</label>
                 </div>
             </div>
             <br></br>         
