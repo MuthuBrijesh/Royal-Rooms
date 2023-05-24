@@ -123,7 +123,7 @@ const Register = () => {
               <input type='password' className='CPass' id='Cpass' name='Cpass' placeholder='Confirm Password' required="required" onChange={(e) => setCPassword(e.target.value)}/>
         </div>
         </div><br></br>
-        <div><input type='submit' className='regis'  style={{color:'black',backgroundColor:'#ffffff'}} /></div>
+        <div><input type='submit' className='regis'  style={{color:'black',backgroundColor:'#ffffff',marginLeft:0}} /></div>
       </form>
     </div>
   )

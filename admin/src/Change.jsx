@@ -13,6 +13,7 @@ const Change = () => {
     function handleSubmit(e) {
       e.preventDefault();
       if(OTPC === otp){
+        if(password===cpassword){
       fetch("http://localhost:5000/change", { method: "POST", crossDomain: true,
         headers: { "Content-Type": "application/json",
           Accept: "application/json", "Access-Control-Allow-Origin": "*", },
@@ -28,8 +29,10 @@ const Change = () => {
             alert("Invalid Credentials");
           }
         });
+    }else{
+      alert("Invalid Password");
     }
-    else{
+  }else{
       alert("Invalid OTP");
     }
   }

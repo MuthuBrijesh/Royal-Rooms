@@ -64,7 +64,6 @@ app.post("/forget",async (req,res) => {
     sendSmtpEmail.to = [{ "email": email }];
     sendSmtpEmail.templateId =2 ;
     sendSmtpEmail.params = {
-        "Name": email,
         "Otp": x
     };
     apiInstance.sendTransacEmail(sendSmtpEmail).then(() => {
@@ -144,37 +143,19 @@ app.post("/register",async (req,res) => {
 //Add Hotel
 app.post("/addhotel",async (req,res) => {
     const {name,addr,phone,city,image} = req.body;
-    console.log("Hotel Add");
     try{
         const check = await Hotel.findOne({name});
         if(check===null){
             await Hotel.create( { name,addr,phone,city,image } );
-            console.log("Ok");
             res.send({ status: "ok"});
         }
         else{
             res.send({status: "error"});
         }
     }catch(error){
-        console.lof('error');
         res.send({status: "error"});
     }
 });
-
-//Home
-/*app.post("/details",async (req,res) => {
-    try{
-        var room = await Room.find();
-        var cuser = await CUser.find();
-        var hotel = await Hotel.find();
-        room = room.length;
-        cuser = cuser.length;
-        hotel = hotel.length;
-        res.send({ status: "ok",room:room,cuser:cuser,hotel:hotel});
-    }catch(error){
-        res.send({send: "error"});
-    }
-});*/
 
 //AddRoom
 app.post("/addroom",async (req,res) => {
@@ -198,7 +179,7 @@ app.post("/retadmin",async (req,res) => {
     }
 });
 
-//Forget Password
+/*//Forget Password
 app.post("/forget-password",async(req, res)=>{
     const {email,x} = req.body;
     console.log(email,x);
@@ -213,7 +194,7 @@ app.post("/forget-password",async(req, res)=>{
         co
         return error;
     }
-})
+})*/
 
 //--------------------------------------------------------------------------------------------------------------------------------------
 //Customer Details 
@@ -308,7 +289,7 @@ app.post("/addbooking",async (req,res) => {
     }
 });
 
-//Reterive all Booking
+//Reterive all Booking Count
 app.post("/countbooking",async (req,res) => {
     try{
         var data=await Book.find().count();
@@ -319,6 +300,7 @@ app.post("/countbooking",async (req,res) => {
     }
 });
 
+//Payment
 app.post("/pay",async (req,res) => {
     var {bookid}= req.body;
     bookid = bookid-1;
@@ -326,6 +308,66 @@ app.post("/pay",async (req,res) => {
     var myquery = { bookid: bookid};
     var newvalues = { payment:"true"};
     const user = await Book.updateOne(myquery,newvalues);
+    if(!user) {
+        return res.json({ error: "User Not Found"});
+    }
+    return res.json({status: "OK"});
+})
+
+//Reterive all Booking
+app.post("/booking",async (req,res) => {
+    var {name}= req.body;
+    try{
+        var data=await Book.find({name});
+        if(data===null){
+            res.send({status: "error"});
+        }
+        res.send({ status: "OK",data:data});
+    } catch(error){
+        console.log(error);
+    }
+});
+
+//Reterive all Booking
+app.post("/allbooking",async (req,res) => {
+    try{
+        var data=await Book.find();
+        if(data===null){
+            res.send({status: "error"});
+        }
+        res.send({ status: "OK",data:data});
+    } catch(error){
+        console.log(error);
+    }
+});
+
+//Forget Password
+app.post("/cforget",async (req,res) => {
+    const {email,x}= req.body;
+    const user = await CUser.findOne({email});
+    if(!user) {
+        return res.json({ error: "User Not Found"});
+    }
+    const apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
+    const sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
+    sendSmtpEmail.to = [{ "email": email }];
+    sendSmtpEmail.templateId =2 ;
+    sendSmtpEmail.params = {
+        "Otp": x
+    };
+    apiInstance.sendTransacEmail(sendSmtpEmail).then(() => {
+        console.log("Password reset email sent");
+    }).catch((err) => {
+    console.log(err);
+    });
+    return res.json({status: "ok"});
+})
+
+app.post("/cchange",async (req,res) => {
+    const {email,password,cpassword}= req.body;
+    var myquery = { email: email };
+    var newvalues = {pass: password, cpass: cpassword };
+    const user = await CUser.updateOne(myquery,newvalues);
     if(!user) {
         return res.json({ error: "User Not Found"});
     }

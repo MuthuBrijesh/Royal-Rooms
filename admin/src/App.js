@@ -11,6 +11,7 @@ import AdminDetails from './AdminDetails';
 import Logout from './Logout';
 import Customer from './Cust';
 import Change from './Change';
+import Bookings from './CBooking';
 import { BrowserRouter , Routes , Route } from 'react-router-dom';
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
           <Route path='/AdminDetails' element={<AdminDetails />}></Route>
           <Route path='/Logout' element={<Logout />}></Route>
           <Route path='/Change' element={<Change />}></Route>
+          <Route path='/Bookings' element={<Bookings />}></Route>
         </Routes>
       </div>
     </BrowserRouter>

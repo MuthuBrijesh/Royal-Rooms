@@ -37,6 +37,7 @@ const AddHotel = () =>{
           .then((data)=>{console.log(data,"UserRegister");
           if (data.status === "ok") {
             alert("Hotel Added Succesfully");
+            window.location.href="./AddHotel";
           }
           else{
             alert("Hotel Already Exist");

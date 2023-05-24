@@ -2,7 +2,6 @@ import React from 'react'
 import './ForgetPass.css';
 import { useState } from "react";
 import background from "./img/14.jpg";
-import { Link } from 'react-router-dom'
 
 const ForgetPass = () =>{
     const [email,setemail] = useState("");
@@ -17,12 +16,13 @@ const ForgetPass = () =>{
       })
         .then((res) => res.json())
         .then((data) => {
-          alert(data.status);
           if (data.status === "ok") {
             alert("OTP Sent Successful");
             sessionStorage.setItem("OTP",x);
             sessionStorage.setItem("ForgetEmail",email);
             window.location.href = "./Change";
+          }else{
+            alert("Invalid Email ID")
           }
         });
     }
@@ -33,7 +33,7 @@ const ForgetPass = () =>{
       <label className='Email'>Email</label>
       <input type='email' className='Email' id='email' name='email' placeholder='Enter the Email-ID' required="required" onChange={(e) => setemail(e.target.value)}/>
       <br></br>
-      <input type='submit' className='sub' style={{color:'black',backgroundColor:'#ffffff'}} value='Log In'/>
+      <input type='submit' className='sub' style={{color:'black',backgroundColor:'#ffffff'}} value='Submit'/>
       <br></br>
       </form>
     </div>

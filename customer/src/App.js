@@ -11,6 +11,7 @@ import Rooms1 from './RoomsDetails';
 import Profile from './Profile';
 import Logout from './Logout';
 import Payment from './Payment';
+import Booking from './Bookings';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path='/Profile' element={<Profile />}></Route>
           <Route path='/Logout' element={<Logout />}></Route>
           <Route path='/Payment' element={<Payment />}></Route>
+          <Route path='/Booking' element={<Booking />}></Route>
         </Routes>
       </div>
     </BrowserRouter>

@@ -44,20 +44,6 @@ const Home = () => {
         <h1>Royal Golden Rooms</h1>
         <button className='button-87' style={{marginLeft:270,marginTop:50}} onClick={submit}> Book Now </button></div>
       </div>
-      <div class="row" style={{color:'#e7dac7',backgroundColor:'#241f1c',height:250,marginBottom:20,textAlign:'center',paddingTop:75}}>
-        <div class="col">
-          <h1>Hi</h1>
-          <h4 style={{color:'#937047'}}>of Happy Guest</h4>
-        </div>
-        <div class="col">
-          <h1>Hi</h1>
-          <h4 style={{color:'#937047'}}>of Rooms</h4>
-        </div>
-        <div class="col">
-          <h1>Hi</h1>
-          <h4 style={{color:'#937047'}}>of Hotels</h4>
-        </div>
-      </div>
       <div style={{backgroundColor:'#e7dac7',marginLeft:250,marginRight:270,marginTop:50}}>
       <div class="row" style={{color:'#e7dac7'}}>
         <div class="col" style={{height:300}}>

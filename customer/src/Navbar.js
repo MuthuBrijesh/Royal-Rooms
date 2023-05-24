@@ -10,12 +10,11 @@ function Navbar() {
         <div className='Nav'>
             <ul>     
                 <img src={logo} alt="Logo" /> 
-                <h3>Royal Rooms</h3>
-                <Link to="./Rooms"><li>Rooms</li></Link> 
-                <Link to="./Rooms1"><li>RoomDetails</li></Link>
+                <h3>Royal Golden Rooms</h3>
+                <Link to="./Rooms"><li>Rooms</li></Link>
                 <Link to="./Profile"><li>Profile</li></Link> 
                 <Link to="./Logout"><li>Logout</li></Link>  
-                <Link to="./Payment"><li>Payment</li></Link>            
+                <Link to="./Booking"><li>MyBooking</li></Link>          
             </ul>
         </div>
     )
@@ -25,9 +24,9 @@ function Navbar() {
             <div className='Nav'>
                 <ul>     
                     <img src={logo} alt="Logo" /> 
-                    <h3>Royal Rooms</h3>
+                    <h3>Royal Golden Rooms</h3>
                     <Link to="./Login"><li>Login</li></Link>
-                <Link to="./Register"><li>Register</li></Link>            
+                    <Link to="./Register"><li>Register</li></Link>            
                 </ul>
             </div>
         )

@@ -9,7 +9,6 @@ function Rooms1() {
   if(curr[0]<9){
     curr[0]='0'+curr[0];
   }
-  var bookid;
   var [bookid,setBookID]=useState("");
   curr[3]=(parseInt(curr[2])+1).toString();
   var date =curr[2]+'-'+curr[0]+'-'+curr[1];

@@ -35,7 +35,7 @@
 .Register input{
     display: block;
     height: 50px;
-    width: 90%;
+    width: 100%;
     background-color: rgba(255,255,255,0.07);
     border-radius: 3px;
     border-style: outset;
@@ -47,7 +47,7 @@
 .Register select{
     display: block;
     height: 50px;
-    width: 90%;
+    width: 100%;
     background-color: rgba(255,255,255,0.07);
     border-radius: 3px;
     border-style: outset;
