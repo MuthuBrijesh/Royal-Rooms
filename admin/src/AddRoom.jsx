@@ -15,10 +15,9 @@ const AddHotel = () =>{
   const [image2, setImage2] = useState(""); 
   const [image3, setImage3] = useState(""); 
   const [image4, setImage4] = useState("");
-  console.log(image1,image2,image3,image4,cusine,hotel); 
-  //const Reg = /^[A-Za-z ]*$/;
   const Regex = /^[0-9]*$/;
   const [data,setData]=useState([]);
+  const [count,setRCount]=useState("");
   useEffect (()=>{
     fetch("http://localhost:5000/hoteldetails", { method: "POST", crossDomain: true,
     headers: { "Content-Type": "application/json",
@@ -33,22 +32,30 @@ const AddHotel = () =>{
   function validate(e) {
     e.preventDefault();
     console.log(maxc,roomt);
-    if(desc.length>=300){
       if(Regex.test(cost) && (cost>0) && (cost<10000000)){
+        C();
         fun();
       }else{
         alert("Invalid Amount");
         }
-      }else{
-        alert("Description length should be less than 300");
-      }
+    }
+    function C(){
+      fetch("http://localhost:5000/countroom", { method: "POST", crossDomain: true,
+      headers: { "Content-Type": "application/json",
+        Accept: "application/json", "Access-Control-Allow-Origin": "*", },
+      body: JSON.stringify(),
+      })
+      .then((res) => res.json())
+      .then((data) => {
+        setRCount(data.data); 
+      });
     }
       function fun(){
-        fetch("http://localhost:5000/addroom",{ method:"POST", crossDomain:true,
-          headers:{ "Content-Type":"application/json",Accept:"application/json",
-          "Access-Control-Allow-Origin":"*",
+        fetch("http://localhost:5000/addroom",{ 
+          method:"POST", crossDomain:true, headers:{ "Content-Type":"application/json",
+          Accept:"application/json", "Access-Control-Allow-Origin":"*",
           },
-          body: JSON.stringify({hotel,maxc,roomt,desc,cusine,cost,image1,image2,image3,image4}), })
+          body: JSON.stringify({hotel,maxc,roomt,desc,cusine,cost,image1,image2,image3,image4,count}), })
         .then((res)=>res.json())
         .then((data)=>{console.log(data,"UserRegister");
         if (data.status === "ok") {

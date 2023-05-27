@@ -1,5 +1,4 @@
 import React from 'react';
-//import image1 from './img/10.jpg';
 import './ListofRooms.css';
 import { useState,useEffect} from "react";
 
@@ -30,8 +29,7 @@ function Rooms(e) {
             return (      
             <div className="card" style={{height:300,width:1000,marginLeft:0,marginTop:30,marginBottom:20}}>
             <div className='row'>
-              <div className='col' style={{marginRight:100}}><img src={i.image1} style={{margin:10,height:280,width:380}} alt="a;t
-              "/></div>
+              <div className='col' style={{marginRight:100}}><img src={i.image1} style={{margin:10,height:280,width:380}} alt="alt"/></div>
               <div className='col' style={{marginLeft:-100,marginTop:10}}>
                 <h1>{i.hotel}</h1>
                 <h2>Count : {i.maxc}</h2>

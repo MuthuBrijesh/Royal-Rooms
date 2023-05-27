@@ -159,9 +159,9 @@ app.post("/addhotel",async (req,res) => {
 
 //AddRoom
 app.post("/addroom",async (req,res) => {
-    const {hotel,maxc,roomt,desc,cusine,cost,image1,image2,image3,image4} = req.body;
+    const {hotel,maxc,roomt,desc,cusine,cost,image1,image2,image3,image4,count} = req.body;
     try{
-        await Room.create( {hotel,maxc,roomt,desc,cusine,cost,image1,image2,image3,image4} );
+        await Room.create( {hotel,maxc,roomt,desc,cusine,cost,image1,image2,image3,image4,count} );
         res.send({ status: "ok"});
     }catch(error){
         res.send({send: "error"});
@@ -178,6 +178,16 @@ app.post("/retadmin",async (req,res) => {
         console.log(error);
     }
 });
+
+app.post("/countroom",async (req,res) => {
+    try{
+        var data=await Room.find().count();
+        res.send({ status: "OK",data:data});
+    } catch(error){
+        console.log(error);
+    }
+});
+
 
 /*//Forget Password
 app.post("/forget-password",async(req, res)=>{
